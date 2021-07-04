@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<property name="now" value="now()" dbms="postgresql"/>
+	<changeSet author="sandips" id="roles-insert-1" failOnError="true" runInTransaction="true">
+		<insert schemaName="public" tableName="roles">
+			<column name="id" valueSequenceNext="rolesSequence"></column>
+			<column name="role_name" value="admin" />
+			<column name="created_by" value="ADMIN" />
+			<column name="created_date" value="now" />
+			<column name="updated_by" value="ADMIN" />
+			<column name="updated_date" value="now" />
+		</insert>
+		<rollback><sql>delete from roles where role_name = 'admin';</sql></rollback>
+	</changeSet>
+
+	<changeSet author="sandips" id="roles-insert-2" failOnError="true" runInTransaction="true">
+		<insert schemaName="public" tableName="roles">
+			<column name="id" valueSequenceNext="rolesSequence"></column>
+			<column name="role_name" value="user_admin" />
+			<column name="created_by" value="ADMIN" />
+			<column name="created_date" value="now" />
+			<column name="updated_by" value="ADMIN" />
+			<column name="updated_date" value="now" />
+		</insert>
+		<rollback><sql>delete from roles where role_name = 'user_admin';</sql></rollback>
+	</changeSet>
+
+	<changeSet author="sandips" id="roles-insert-3" failOnError="true" runInTransaction="true">
+		<insert schemaName="public" tableName="roles">
+			<column name="id" valueSequenceNext="rolesSequence"></column>
+			<column name="role_name" value="user" />
+			<column name="created_by" value="ADMIN" />
+			<column name="created_date" value="now" />
+			<column name="updated_by" value="ADMIN" />
+			<column name="updated_date" value="now" />
+		</insert>
+		<rollback><sql>delete from roles where role_name = 'user';</sql></rollback>
+	</changeSet>
+</databaseChangeLog>

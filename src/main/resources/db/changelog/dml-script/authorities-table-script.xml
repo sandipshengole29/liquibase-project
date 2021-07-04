@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<property name="now" value="now()" dbms="postgresql"/>
+	<changeSet author="sandips" id="authorities-insert-1" failOnError="true" runInTransaction="true">
+		<insert schemaName="public" tableName="authorities">
+			<column name="id" valueSequenceNext="authoritiesSequence"></column>
+			<column name="authority_name" value="viewAdminLandingPage" />
+			<column name="created_by" value="ADMIN" />
+			<column name="created_date" value="now" />
+			<column name="updated_by" value="ADMIN" />
+			<column name="updated_date" value="now" />
+		</insert>
+		<rollback><sql>delete from authorities where authority_name = 'viewAdminLandingPage';</sql></rollback>
+	</changeSet>
+
+	<changeSet author="sandips" id="authorities-insert-2" failOnError="true" runInTransaction="true">
+		<insert schemaName="public" tableName="authorities">
+			<column name="id" valueSequenceNext="authoritiesSequence"></column>
+			<column name="authority_name" value="viewUserAdminLandingPage" />
+			<column name="created_by" value="ADMIN" />
+			<column name="created_date" value="now" />
+			<column name="updated_by" value="ADMIN" />
+			<column name="updated_date" value="now" />
+		</insert>
+		<rollback><sql>delete from authorities where authority_name = 'viewUserAdminLandingPage';</sql></rollback>
+	</changeSet>
+
+	<changeSet author="sandips" id="authorities-insert-3" failOnError="true" runInTransaction="true">
+		<insert schemaName="public" tableName="authorities">
+			<column name="id" valueSequenceNext="authoritiesSequence"></column>
+			<column name="authority_name" value="viewUserLandingPage" />
+			<column name="created_by" value="ADMIN" />
+			<column name="created_date" value="now" />
+			<column name="updated_by" value="ADMIN" />
+			<column name="updated_date" value="now" />
+		</insert>
+		<rollback><sql>delete from authorities where authority_name = 'viewUserLandingPage';</sql></rollback>
+	</changeSet>
+</databaseChangeLog>

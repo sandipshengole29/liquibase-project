@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet author="sandips" id="rolesAuthoritiesTable">
+		<createTable tableName="roles_authorities">
+			<column name="id" type="INT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="role_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_roles_role_id" referencedColumnNames="id" referencedTableName="roles"/>
+			</column>
+			<column name="auth_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_authorities_auth_id" referencedColumnNames="id" referencedTableName="authorities"/>
+			</column>
+			<column name="created_by" type="VARCHAR(500)">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_date" type="timestamp">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated_by" type="VARCHAR(500)">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated_date" type="timestamp">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<rollback>
+			<dropTable tableName="roles_authorities" />
+		</rollback>
+	</changeSet>
+
+	<changeSet id="roles-authorities-sequence" author="sandips">
+		<sql>CREATE SEQUENCE rolesAuthoritiesSequence INCREMENT 1 START 2;</sql>
+		<rollback>DROP SEQUENCE rolesAuthoritiesSequence;</rollback>
+	</changeSet>
+
+</databaseChangeLog>

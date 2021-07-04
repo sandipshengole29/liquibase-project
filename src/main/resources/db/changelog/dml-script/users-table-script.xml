@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<property name="now" value="now()" dbms="postgresql"/>
+	<changeSet author="sandips" id="users-insert-1" failOnError="true" runInTransaction="true">
+		<insert schemaName="public" tableName="users">
+			<column name="id" valueSequenceNext="usersSequence"></column>
+			<column name="user_name" value="sandips" />
+			<column name="password" value="password@123" />
+			<column name="enabled" value="Y" />
+			<column name="created_by" value="ADMIN" />
+			<column name="created_date" value="now" />
+			<column name="updated_by" value="ADMIN" />
+			<column name="updated_date" value="now" />
+		</insert>
+		<rollback><sql>delete from users where user_name = 'sandips';</sql></rollback>
+	</changeSet>
+
+	<changeSet author="sandips" id="users-insert-2" failOnError="true" runInTransaction="true">
+		<insert schemaName="public" tableName="users">
+			<column name="id" valueSequenceNext="usersSequence"></column>
+			<column name="user_name" value="admin" />
+			<column name="password" value="password@123" />
+			<column name="enabled" value="Y" />
+			<column name="created_by" value="ADMIN" />
+			<column name="created_date" value="now" />
+			<column name="updated_by" value="ADMIN" />
+			<column name="updated_date" value="now" />
+		</insert>
+		<rollback><sql>delete from users where user_name = 'admin';</sql></rollback>
+	</changeSet>
+
+	<changeSet author="sandips" id="users-insert-3" failOnError="true" runInTransaction="true">
+		<insert schemaName="public" tableName="users">
+			<column name="id" valueSequenceNext="usersSequence"></column>
+			<column name="user_name" value="user1" />
+			<column name="password" value="password@123" />
+			<column name="enabled" value="Y" />
+			<column name="created_by" value="ADMIN" />
+			<column name="created_date" value="now" />
+			<column name="updated_by" value="ADMIN" />
+			<column name="updated_date" value="now" />
+		</insert>
+		<rollback><sql>delete from users where user_name = 'user1';</sql></rollback>
+	</changeSet>
+</databaseChangeLog>

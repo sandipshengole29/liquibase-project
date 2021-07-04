@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<!-- DDL Script files -->
+    <include file="db/changelog/ddl-script/create-users-table.xml"/>
+    <include file="db/changelog/ddl-script/create-roles-table.xml"/>
+    <include file="db/changelog/ddl-script/create-authorities-table.xml"/>
+    <include file="db/changelog/ddl-script/create-users-role-table.xml"/>
+    <include file="db/changelog/ddl-script/create-roles-authorities-table.xml"/>
+    
+    <!-- DML Script files -->
+    <include file="db/changelog/dml-script/users-table-script.xml"/>
+    <include file="db/changelog/dml-script/roles-table-script.xml"/>
+    <include file="db/changelog/dml-script/authorities-table-script.xml"/>
+    <include file="db/changelog/dml-script/users-roles-table-script.xml"/>
+    <include file="db/changelog/dml-script/roles-authorities-table-script.xml"/>
+</databaseChangeLog>

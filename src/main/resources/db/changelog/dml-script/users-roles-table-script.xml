@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet author="sandips" id="users-roles-insert-1" failOnError="true" runInTransaction="true">
+		<sql>insert into users_roles (id, user_id, role_id, created_by, created_date, updated_by, updated_date) values(nextVal('usersRolesSequence'), (select id from users where user_name='sandips'), (select id from roles where role_name='user_admin'),'ADMIN',NOW(),'ADMIN',NOW());</sql>
+		<rollback><sql>delete from users_roles where user_id = (select id from users where user_name='sandips') and role_id = (select id from roles where role_name='user_admin');</sql></rollback>
+	</changeSet>
+
+	<changeSet author="sandips" id="users-roles-insert-2" failOnError="true" runInTransaction="true">
+		<sql>insert into users_roles (id, user_id, role_id, created_by, created_date, updated_by, updated_date) values(nextVal('usersRolesSequence'), (select id from users where user_name='admin'), (select id from roles where role_name='admin'),'ADMIN',NOW(),'ADMIN',NOW());</sql>
+		<rollback><sql>delete from users_roles where user_id = (select id from users where user_name='admin') and role_id = (select id from roles where role_name='admin');</sql></rollback>
+	</changeSet>
+
+	<changeSet author="sandips" id="users-roles-insert-3" failOnError="true" runInTransaction="true">
+		<sql>insert into users_roles (id, user_id, role_id, created_by, created_date, updated_by, updated_date) values(nextVal('usersRolesSequence'), (select id from users where user_name='user1'), (select id from roles where role_name='user'),'ADMIN',NOW(),'ADMIN',NOW());</sql>
+		<rollback><sql>delete from users_roles where user_id = (select id from users where user_name='user1') and role_id = (select id from roles where role_name='user');</sql></rollback>
+	</changeSet>
+</databaseChangeLog>
