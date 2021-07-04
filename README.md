@@ -1,5 +1,7 @@
 # liquibase-project
-This project contains the liquibase demo to maintain the application database changes 
+This project contains the liquibase demo to maintain the application database changes.
+
+
 DEPLOY THIS APPLICATION:
 
 To deploy this application from STS use following command:
